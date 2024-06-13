@@ -3,7 +3,7 @@ export const getMoviesList = async (query, page, status = "") => {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization: "Bearer " + process.env.MOVIE_API_KEY,
+      Authorization: "Bearer " + process.env.NEXT_PUBLIC_MOVIE_API_KEY,
     },
     catch: "no-store",
   };
@@ -31,7 +31,7 @@ export const getMovieDetails = async (id) => {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization: "Bearer " + process.env.MOVIE_API_KEY,
+      Authorization: "Bearer " + process.env.NEXT_PUBLIC_MOVIE_API_KEY,
     },
     cache: "no-store",
   };

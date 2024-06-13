@@ -7,9 +7,6 @@ import { Suggessions } from "../movie/Suggessions/Suggessions";
 import MoviePageHeader from "../movie/MoviePageHeader";
 import { wait } from "@/utils/helper";
 import { Motion } from "../generic/motion/Motion";
-import IconButton from "../generic/icon-button/IconButton";
-import { PlayIcon, SunIcon } from "@radix-ui/react-icons";
-import { YoutubeIcon } from "lucide-react";
 import PlayIcons from "../movie/movie-details/PlayIcons";
 
 const LandingPage = async () => {
