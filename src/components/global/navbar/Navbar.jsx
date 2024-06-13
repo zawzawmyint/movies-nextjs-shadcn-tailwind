@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import { NavigationMenuBar } from "./NavigationMenu";
 import { DrawerBox } from "../drawer/DrawerBox";
 import { HeartIcon } from "@radix-ui/react-icons";
+import { Suspense } from "react";
 
 const Navbar = () => {
   return (
@@ -17,7 +18,9 @@ const Navbar = () => {
           <div className="hidden sm:block">
             <NavigationMenuBar />
           </div>
-          <SearchBar />
+          <Suspense fallback={<div></div>}>
+            <SearchBar />
+          </Suspense>
           <ModeToggle />
           <div className="sm:hidden">
             <DrawerBox />
