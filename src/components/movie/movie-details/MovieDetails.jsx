@@ -7,6 +7,7 @@ import { HeartFilledIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import React from "react";
 import PlayIcons from "./PlayIcons";
+import TextTitle from "@/components/landing/TextTitle";
 
 const MovieDetails = async ({ movieId }) => {
   const data = await getMovieDetails(movieId);
@@ -23,9 +24,7 @@ const MovieDetails = async ({ movieId }) => {
         />
       </Motion>
       <div className="max-w-xl flex flex-col justify-center text-center items-center gap-5 absolute top-24 sm:top-48 sm:left-[24%] p-5 text-gray-50/100 ">
-        <h1 className="scroll-m-20 text-red-600 text-4xl font-extrabold tracking-tight lg:text-5xl">
-          {data.title}
-        </h1>
+        <TextTitle title={data.title} />
         <div className="flex flex-wrap gap-2 justify-center items-center">
           <PlayIcons id={data.id} />
           <HeartFilledIcon className="w-[2rem] h-[2rem] border-1  border-x-sky-600 text-white" />

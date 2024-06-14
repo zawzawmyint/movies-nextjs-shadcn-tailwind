@@ -8,6 +8,7 @@ import MoviePageHeader from "../movie/MoviePageHeader";
 import { wait } from "@/utils/helper";
 import { Motion } from "../generic/motion/Motion";
 import PlayIcons from "../movie/movie-details/PlayIcons";
+import TextTitle from "./TextTitle";
 
 const LandingPage = async () => {
   const { page, results } = await getMoviesList("", 1, "top_rated");
@@ -23,11 +24,7 @@ const LandingPage = async () => {
         className=" bg-transparent w-full h-[700px] object-cover"
       />
       <div className="max-w-xl text-gray-300/100  flex flex-col gap-5 absolute top-10 sm:top-32 sm:left-14 p-5 ">
-        <Motion>
-          <h1 className="scroll-m-20 text-primary text-4xl font-extrabold tracking-tight lg:text-5xl">
-            {data.title}
-          </h1>
-        </Motion>
+        <TextTitle title={data.title} />
         <Motion delay="0.6">
           <p className="leading-2   [&:not(:first-child)]:mt-6 text-balance">
             {data.overview}
