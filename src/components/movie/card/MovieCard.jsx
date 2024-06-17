@@ -15,6 +15,8 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Motion } from "@/components/generic/motion/Motion";
 import { View, VoteIcon } from "lucide-react";
+import moment from "moment";
+import { dateFormat } from "@/utils/helper";
 
 export function MovieCard({ movie }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -55,7 +57,7 @@ export function MovieCard({ movie }) {
             <CardTitle className="text-md text-primary">
               {movie.title}
             </CardTitle>
-            <CardDescription>{movie.release_date}</CardDescription>
+            <CardDescription>{dateFormat(movie.release_date)}</CardDescription>
           </CardContent>
           <CardFooter className="flex justify-between">
             <CardDescription className="flex justify-center items-center">

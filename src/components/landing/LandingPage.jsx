@@ -9,11 +9,13 @@ import { wait } from "@/utils/helper";
 import { Motion } from "../generic/motion/Motion";
 import PlayIcons from "../movie/movie-details/PlayIcons";
 import TextTitle from "./TextTitle";
+import MovieGenresAndDate from "../movie/movie-details/MovieGenresAndDate";
 
 const LandingPage = async () => {
   const { page, results } = await getMoviesList("", 1, "top_rated");
   await wait(1000);
   const data = results[0];
+
   return (
     <div className="relative w-full">
       <Image
@@ -26,11 +28,11 @@ const LandingPage = async () => {
       <div className="max-w-xl text-gray-300/100  flex flex-col gap-5 absolute top-10 sm:top-32 sm:left-14 p-5 ">
         <TextTitle title={data.title} />
         <Motion delay="0.6">
-          <p className="leading-2   [&:not(:first-child)]:mt-6 text-balance">
+          <p className="leading-2   [&:not(:first-child)]:mt-6 text-balance text-center sm:text-start">
             {data.overview}
           </p>
         </Motion>
-        <div>
+        <div className="text-center sm:text-start">
           <Link href={`/movies/${data.id}`}>More info➡️</Link>
         </div>
         <Motion delay="0.7">

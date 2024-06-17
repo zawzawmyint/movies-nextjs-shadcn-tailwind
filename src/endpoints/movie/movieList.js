@@ -47,3 +47,24 @@ export const getMovieDetails = async (id) => {
 
   return response;
 };
+export const getMovieGenres = async () => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: "Bearer " + process.env.NEXT_PUBLIC_MOVIE_API_KEY,
+    },
+    cache: "no-store",
+  };
+
+  const url = "https://api.themoviedb.org/3/genre/movie/list?language=en";
+
+  const response = await fetch(url, options)
+    .then((response) => response.json())
+    .catch((err) => {
+      console.error(err);
+      return Promise.reject(err);
+    });
+
+  return response;
+};

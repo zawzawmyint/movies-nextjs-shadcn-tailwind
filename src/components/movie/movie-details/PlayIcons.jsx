@@ -9,7 +9,7 @@ import React from "react";
 const PlayIcons = ({ id }) => {
   return (
     <Motion delay="0.7">
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2">
         <Link href={`/movies/${id}`}>
           <IconButton
             name={"Watch Tailer"}

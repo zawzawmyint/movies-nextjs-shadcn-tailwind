@@ -8,6 +8,7 @@ import { wait } from "@/utils/helper";
 const MovieList = async ({ query, currentPage }) => {
   const { page, results } = await getMoviesList(query, currentPage);
   await wait(1000);
+
   return (
     <div>
       <FlexBox>
