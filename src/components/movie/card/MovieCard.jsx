@@ -10,13 +10,17 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { HeartFilledIcon, HeartIcon } from "@radix-ui/react-icons";
+import {
+  HeartFilledIcon,
+  HeartIcon,
+  StarFilledIcon,
+} from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Motion } from "@/components/generic/motion/Motion";
 import { View, VoteIcon } from "lucide-react";
 import moment from "moment";
-import { dateFormat } from "@/utils/helper";
+import { calculateRates, dateFormat } from "@/utils/helper";
 
 export function MovieCard({ movie }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -28,6 +32,8 @@ export function MovieCard({ movie }) {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+  const rates = calculateRates(movie.vote_average);
   return (
     <Motion x={10} y={10} scale={[0.5, 1]} duration={1}>
       <Link href={`/movies/${movie.id}`}>
@@ -61,7 +67,7 @@ export function MovieCard({ movie }) {
           </CardContent>
           <CardFooter className="flex justify-between">
             <CardDescription className="flex justify-center items-center">
-              <VoteIcon /> : {Math.round(movie.vote_count)}
+              ⭐{rates.toFixed(2)}%
             </CardDescription>
             <CardDescription className="flex justify-center items-center">
               <View /> : {Math.round(movie.popularity)}

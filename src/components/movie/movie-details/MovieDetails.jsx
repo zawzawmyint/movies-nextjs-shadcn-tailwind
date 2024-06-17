@@ -31,7 +31,7 @@ const MovieDetails = async ({ movieId }) => {
 
         <MovieGenresAndDate
           date={data.release_date}
-          stars={data.vote_count}
+          stars={data.vote_average}
           genres={data.genres}
         />
 
