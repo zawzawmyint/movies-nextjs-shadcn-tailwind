@@ -21,6 +21,7 @@ import { Motion } from "@/components/generic/motion/Motion";
 import { View, VoteIcon } from "lucide-react";
 import moment from "moment";
 import { calculateRates, dateFormat } from "@/utils/helper";
+import IconButton from "@/components/generic/icon-button/IconButton";
 
 export function MovieCard({ movie }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -48,8 +49,10 @@ export function MovieCard({ movie }) {
                 isHovered ? "opacity-100" : "opacity-0"
               }    transition-opacity duration-300 `}
             >
+              <Button variant="secondary" size="icon" className="rounded-lg">
+                <HeartFilledIcon className="w-[1.5rem] h-[1.5rem] " />
+              </Button>
               {/* <HeartIcon className="w-[1.5rem] h-[1.5rem]" /> */}
-              <HeartFilledIcon className="w-[1.5rem] h-[1.5rem] border-1  border-x-sky-600 text-white" />
             </div>
             <Image
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
