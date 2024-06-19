@@ -1,8 +1,10 @@
+"use client";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  favoriates: JSON.parse(localStorage.getItem("favoriates")) || [],
+  favoriates: [],
 };
+// favoriates: JSON.parse(localStorage.getItem("favoriates")) || [],
 
 export const favoriateSlice = createSlice({
   name: "favoriate",
@@ -15,13 +17,13 @@ export const favoriateSlice = createSlice({
       // immutable state based off those changes
       state.favoriates = [actions.payload, ...state.favoriates];
 
-      localStorage.setItem("favoriates", JSON.stringify(state.favoriates));
+      // localStorage.setItem("favoriates", JSON.stringify(state.favoriates));
     },
     removeFromFavoraites: (state, actions) => {
       state.favoriates = state.favoriates.filter(
         (item) => item.id !== actions.payload
       );
-      localStorage.setItem("favoriates", JSON.stringify(state.favoriates));
+      // localStorage.setItem("favoriates", JSON.stringify(state.favoriates));
     },
   },
 });
