@@ -10,6 +10,7 @@ import { Motion } from "../generic/motion/Motion";
 import PlayIcons from "../movie/movie-details/PlayIcons";
 import TextTitle from "./TextTitle";
 import MovieGenresAndDate from "../movie/movie-details/MovieGenresAndDate";
+import MovieDetailFavButton from "../movie/movie-details/MovieDetailFavButton";
 
 const LandingPage = async () => {
   const { page, results } = await getMoviesList("", 1, "top_rated");
@@ -36,7 +37,10 @@ const LandingPage = async () => {
           <Link href={`/movies/${data.id}`}>More info➡️</Link>
         </div>
         <Motion delay="0.7">
-          <PlayIcons id={data.id} />
+          <div className="flex flex-wrap gap-2 justify-center sm:justify-start items-center">
+            <PlayIcons id={data.id} />
+            <MovieDetailFavButton movie={data} />
+          </div>
         </Motion>
       </div>
       <div className="m-2 mx-14 sm:mx-20  ">

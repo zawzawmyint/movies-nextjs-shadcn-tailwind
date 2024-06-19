@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 
 import {
@@ -10,11 +9,13 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { usePathname, useRouter } from "next/navigation";
-import { HeartIcon } from "@radix-ui/react-icons";
+import { useAppSelector } from "@/lib/hooks";
+import { HeartFilledIcon } from "@radix-ui/react-icons";
+import { usePathname } from "next/navigation";
 
 export function NavigationMenuBar({ mobile = false }) {
   const pathname = usePathname();
+  const favoriates = useAppSelector((state) => state.favoriate.favoriates);
 
   const menus = [
     { route: "/", name: "Home" },
@@ -27,9 +28,12 @@ export function NavigationMenuBar({ mobile = false }) {
 
   function favsMenu() {
     return mobile ? (
-      <>Favs ❤️</>
+      <>Favs ❤️ {favoriates.length !== 0 && favoriates.length}</>
     ) : (
-      <HeartIcon className="h-[1.2rem] w-[1.2rem] " />
+      <div className="flex gap-2 justify-center items-center">
+        <HeartFilledIcon className={`h-[1.2rem] w-[1.2rem] text-red-600  `} />
+        {favoriates.length !== 0 && favoriates.length}
+      </div>
     );
   }
   return (

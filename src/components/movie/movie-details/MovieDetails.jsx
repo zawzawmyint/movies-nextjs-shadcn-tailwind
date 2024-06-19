@@ -1,15 +1,12 @@
 import { Motion } from "@/components/generic/motion/Motion";
-import Container from "@/components/global/Container";
-import { Button } from "@/components/ui/button";
-import { getMovieDetails, getMovieGenres } from "@/endpoints/movie/movieList";
-import { wait } from "@/utils/helper";
-import { HeartFilledIcon } from "@radix-ui/react-icons";
-import Image from "next/image";
-import React from "react";
-import PlayIcons from "./PlayIcons";
 import TextTitle from "@/components/landing/TextTitle";
-import MovieGenresAndDate from "./MovieGenresAndDate";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { getMovieDetails } from "@/endpoints/movie/movieList";
+import { wait } from "@/utils/helper";
+import Image from "next/image";
+import MovieDetailFavButton from "./MovieDetailFavButton";
+import MovieGenresAndDate from "./MovieGenresAndDate";
+import PlayIcons from "./PlayIcons";
 
 const MovieDetails = async ({ movieId }) => {
   const data = await getMovieDetails(movieId);
@@ -37,7 +34,7 @@ const MovieDetails = async ({ movieId }) => {
 
         <div className="flex flex-wrap gap-2 justify-center items-center">
           <PlayIcons id={data.id} />
-          <HeartFilledIcon className="w-[2rem] h-[2rem] border-1  border-x-sky-600 text-white" />
+          <MovieDetailFavButton movie={data} />
         </div>
         <ScrollArea className="h-64 rounded p-5 bg-gray-400 bg-opacity-60 leading-2 [&:not(:first-child)]:mt-10 min-w-full">
           {data.overview

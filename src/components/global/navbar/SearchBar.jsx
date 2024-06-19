@@ -1,27 +1,21 @@
 "use client";
-import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
-import {
-  redirect,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
-  DialogOverlay,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
 const SearchBar = () => {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
+  const pathname = usePathname();
+  const path = pathname.includes("favs") ? "/favs" : "/movies";
 
   const handleSearch = useDebouncedCallback(
     (term) => {
@@ -32,7 +26,7 @@ const SearchBar = () => {
       } else {
         params.delete("query");
       }
-      replace(`/movies?${params.toString()}`);
+      replace(`${path}?${params.toString()}`);
     },
     [500]
   );
@@ -44,7 +38,9 @@ const SearchBar = () => {
       </DialogTrigger>
       <DialogContent className="top-[15%]">
         <DialogHeader>
-          <DialogTitle>Search Movies</DialogTitle>
+          <DialogTitle>
+            Search {pathname.includes("favs") ? "Favoriates" : "Movies"}
+          </DialogTitle>
         </DialogHeader>
         <div className="flex justify-center items-center gap-3 border-2 p-1 px-2 rounded-lg">
           <Search className="h-[1.2rem]  w-[1.2rem]" />
