@@ -29,22 +29,22 @@ export function MovieCard({ movie }) {
 
   const rates = calculateRates(movie.vote_average);
   return (
-    <Motion x={10} y={10} scale={[0.5, 1]} duration={1}>
-      <Card
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className={`w-full  hover:shadow-md hover:drop-shadow-lg`}
-      >
-        <CardHeader className="relative">
-          <div
-            className={`absolute top-12 z-50 right-10 ${
-              isHovered ? "opacity-100" : "opacity-0"
-            }    transition-opacity duration-300 `}
-          >
-            <MovieDetailFavButton movie={movie} />
-            {/* <HeartIcon className="w-[1.5rem] h-[1.5rem]" /> */}
-          </div>
-          <Link href={`/movies/${movie.id}`}>
+    <Card
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`w-full  hover:shadow-md hover:drop-shadow-lg`}
+    >
+      <CardHeader className="relative">
+        <div
+          className={`absolute top-12 z-50 right-10 ${
+            isHovered ? "opacity-100" : "opacity-0"
+          }    transition-opacity duration-300 `}
+        >
+          <MovieDetailFavButton movie={movie} />
+          {/* <HeartIcon className="w-[1.5rem] h-[1.5rem]" /> */}
+        </div>
+        <Link href={`/movies/${movie.id}`}>
+          <Motion x={10} y={10} scale={[1.5, 0.8, 1]} duration={1}>
             <Image
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               width={100}
@@ -52,21 +52,21 @@ export function MovieCard({ movie }) {
               alt={movie.title}
               className="rounded w-full max-h-64 object-cover"
             />
-          </Link>
-        </CardHeader>
-        <CardContent>
-          <CardTitle className="text-md text-primary">{movie.title}</CardTitle>
-          <CardDescription>{dateFormat(movie.release_date)}</CardDescription>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <CardDescription className="flex justify-center items-center">
-            ⭐{rates.toFixed(2)}%
-          </CardDescription>
-          <CardDescription className="flex justify-center items-center">
-            <View /> : {Math.round(movie.popularity)}
-          </CardDescription>
-        </CardFooter>
-      </Card>
-    </Motion>
+          </Motion>
+        </Link>
+      </CardHeader>
+      <CardContent>
+        <CardTitle className="text-md text-primary">{movie.title}</CardTitle>
+        <CardDescription>{dateFormat(movie.release_date)}</CardDescription>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <CardDescription className="flex justify-center items-center">
+          ⭐{rates.toFixed(2)}%
+        </CardDescription>
+        <CardDescription className="flex justify-center items-center">
+          <View /> : {Math.round(movie.popularity)}
+        </CardDescription>
+      </CardFooter>
+    </Card>
   );
 }
