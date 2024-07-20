@@ -9,10 +9,10 @@ import {
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export function MovieListSkeleton() {
+export function MovieListSkeleton({ length = 20 }) {
   return (
     <FlexBox>
-      {Array.from({ length: 20 }).map((_, index) => (
+      {Array.from({ length: length }).map((_, index) => (
         <Card key={index} className={`w-full`}>
           <CardHeader>
             <Skeleton className={"h-44 w-full"} />

@@ -34,32 +34,31 @@ export function MovieCard({ movie }) {
       onMouseLeave={handleMouseLeave}
       className={`w-full  hover:shadow-md hover:drop-shadow-lg`}
     >
-      <CardHeader className="relative">
-        <div
-          className={`absolute top-12 z-50 right-10 ${
-            isHovered ? "opacity-100" : "opacity-0"
-          }    transition-opacity duration-300 `}
-        >
-          <MovieDetailFavButton movie={movie} />
-          {/* <HeartIcon className="w-[1.5rem] h-[1.5rem]" /> */}
-        </div>
-        <Link href={`/movies/${movie.id}`}>
-          <Motion x={10} y={10} scale={[1.5, 0.8, 1]} duration={1}>
+      <Motion x={10} y={10} scale={[1.5, 0.8, 1]} duration={1}>
+        <CardHeader className="relative aspect-square m-2">
+          <div
+            className={`absolute top-12 z-50 right-10 ${
+              isHovered ? "opacity-100" : "opacity-0"
+            }    transition-opacity duration-300 `}
+          >
+            <MovieDetailFavButton movie={movie} />
+            {/* <HeartIcon className="w-[1.5rem] h-[1.5rem]" /> */}
+          </div>
+          <Link href={`/movies/${movie.id}`}>
             <Image
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              width={100}
-              height={200}
+              fill
               alt={movie.title}
-              className="rounded w-full max-h-64 object-cover"
+              className="rounded object-cover"
             />
-          </Motion>
-        </Link>
-      </CardHeader>
+          </Link>
+        </CardHeader>
+      </Motion>
       <CardContent>
         <CardTitle className="text-md text-primary">{movie.title}</CardTitle>
         <CardDescription>{dateFormat(movie.release_date)}</CardDescription>
       </CardContent>
-      <CardFooter className="flex justify-between">
+      <CardFooter className="flex flex-wrap justify-between">
         <CardDescription className="flex justify-center items-center">
           ⭐{rates.toFixed(2)}%
         </CardDescription>

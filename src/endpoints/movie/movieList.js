@@ -13,7 +13,7 @@ export const getMoviesList = async (query, page, status = "") => {
     // search
     url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}`;
   } else if (status) {
-    // suggessions
+    // category
     url = `https://api.themoviedb.org/3/movie/${status}?language=en-US&page=1`;
   }
 
@@ -26,7 +26,7 @@ export const getMoviesList = async (query, page, status = "") => {
 
   return response;
 };
-export const getMovieDetails = async (id) => {
+export const getMovieDetails = async (id, param = "") => {
   const options = {
     method: "GET",
     headers: {
@@ -36,7 +36,9 @@ export const getMovieDetails = async (id) => {
     cache: "no-store",
   };
 
-  const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+  const url = !param
+    ? `https://api.themoviedb.org/3/movie/${id}?language=en-US`
+    : `https://api.themoviedb.org/3/movie/${id}/${param}?language=en-US&page=1`;
 
   const response = await fetch(url, options)
     .then((response) => response.json())

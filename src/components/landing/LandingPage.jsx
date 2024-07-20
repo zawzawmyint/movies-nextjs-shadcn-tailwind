@@ -1,26 +1,25 @@
+import { getMovieDetails, getMoviesList } from "@/endpoints/movie/movieList";
 import Image from "next/image";
-import React from "react";
-import { Button } from "../ui/button";
 import Link from "next/link";
-import { getMoviesList } from "@/endpoints/movie/movieList";
-import { Suggessions } from "../movie/Suggessions/Suggessions";
-import MoviePageHeader from "../movie/MoviePageHeader";
-import { wait } from "@/utils/helper";
 import { Motion } from "../generic/motion/Motion";
-import PlayIcons from "../movie/movie-details/PlayIcons";
-import TextTitle from "./TextTitle";
-import MovieGenresAndDate from "../movie/movie-details/MovieGenresAndDate";
 import MovieDetailFavButton from "../movie/movie-details/MovieDetailFavButton";
+import PlayIcons from "../movie/movie-details/PlayIcons";
+import MoviePageHeader from "../movie/MoviePageHeader";
+import { Suggessions } from "../movie/Suggessions/Suggessions";
+import TextTitle from "./TextTitle";
+import { wait } from "@/utils/helper";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 
 const LandingPage = async () => {
-  const { page, results } = await getMoviesList("", 1, "top_rated");
+  const { page, results } = await getMoviesList("", 1);
   await wait(1000);
+  const details = await getMovieDetails(results[0].id, "recommendations");
   const data = results[0];
 
   return (
     <div className="relative w-full">
       <Image
-        src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
         width={50}
         height={50}
         alt="logo"
@@ -44,8 +43,9 @@ const LandingPage = async () => {
         </Motion>
       </div>
       <div className="m-2 mx-14 sm:mx-20  ">
-        <MoviePageHeader name={"Suggessions"} />
-        <Suggessions data={results} />
+        <MoviePageHeader name={"Recommendations"} />
+
+        <Suggessions data={details.results} />
       </div>
     </div>
   );

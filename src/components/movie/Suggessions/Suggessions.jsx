@@ -1,5 +1,4 @@
 "use client";
-import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -7,6 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import { MovieCard } from "../card/MovieCard";
 
 export function Suggessions({ data }) {
@@ -23,15 +23,16 @@ export function Suggessions({ data }) {
       ]}
       className="w-full"
     >
-      <CarouselContent>
+      <CarouselContent className="w-full">
         {data.map((item, index) => (
-          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/5">
+          <CarouselItem key={index} className=" md:basis-1/2 lg:basis-1/6">
             <div className="p-1">
               <MovieCard movie={item} />
             </div>
           </CarouselItem>
         ))}
       </CarouselContent>
+
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>

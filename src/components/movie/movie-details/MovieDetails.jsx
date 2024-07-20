@@ -11,11 +11,12 @@ import PlayIcons from "./PlayIcons";
 const MovieDetails = async ({ movieId }) => {
   const data = await getMovieDetails(movieId);
   await wait(1000);
+
   return (
     <div className="m-2 relative">
       <Motion x={10} y={10} scale={[0.5, 1]} duration={1}>
         <Image
-          src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
           width={50}
           height={50}
           alt="logo"
