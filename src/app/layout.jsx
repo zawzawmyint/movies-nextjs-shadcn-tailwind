@@ -12,6 +12,12 @@ const fontSans = Roboto_Mono({
   variable: "--font-sans",
 });
 
+export const metadata = {
+  title: "Movies",
+  icons: {
+    icon: "images/logo/movie-logo.jpg",
+  },
+};
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>

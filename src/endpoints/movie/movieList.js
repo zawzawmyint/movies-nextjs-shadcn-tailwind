@@ -1,4 +1,4 @@
-export const getMoviesList = async (query, page, status = "") => {
+export const getMoviesList = async (query = "", page = 1, category = "") => {
   const options = {
     method: "GET",
     headers: {
@@ -12,9 +12,9 @@ export const getMoviesList = async (query, page, status = "") => {
   if (query) {
     // search
     url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}`;
-  } else if (status) {
-    // category
-    url = `https://api.themoviedb.org/3/movie/${status}?language=en-US&page=1`;
+  } else if (category && category !== "all") {
+    // category except all optoins
+    url = `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=${page}`;
   }
 
   const response = await fetch(url, options)

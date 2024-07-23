@@ -4,8 +4,8 @@ import { getMoviesList } from "@/endpoints/movie/movieList";
 import { wait } from "@/utils/helper";
 import { MovieCard } from "../card/MovieCard";
 
-const MovieList = async ({ query, currentPage }) => {
-  const { page, results } = await getMoviesList(query, currentPage);
+const MovieList = async ({ query, currentPage, category = "" }) => {
+  const { page, results } = await getMoviesList(query, currentPage, category);
   await wait(1000);
 
   return (
