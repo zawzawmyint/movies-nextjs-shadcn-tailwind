@@ -32,14 +32,14 @@ export function MovieCard({ movie }) {
     <Card
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`w-full  hover:shadow-md hover:drop-shadow-lg`}
+      className={`w-full  hover:shadow-md hover:drop-shadow-lg hover:scale-95 transition-all duration-500`}
     >
       <Motion x={10} y={10} scale={[1.5, 0.8, 1]} duration={1}>
         <CardHeader className="relative aspect-square m-2">
           <div
             className={`absolute top-12 z-50 right-10 ${
               isHovered ? "opacity-100" : "opacity-0"
-            }    transition-opacity duration-300 `}
+            }    transition-opacity duration-700 `}
           >
             <MovieDetailFavButton movie={movie} />
             {/* <HeartIcon className="w-[1.5rem] h-[1.5rem]" /> */}
@@ -49,7 +49,9 @@ export function MovieCard({ movie }) {
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               fill
               alt={movie.title}
-              className="rounded object-cover"
+              className={`rounded object-cover  ${
+                isHovered ? "scale-125  transition-all duration-500" : ""
+              } `}
             />
           </Link>
         </CardHeader>
