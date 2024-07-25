@@ -49,8 +49,8 @@ export function MovieCard({ movie }) {
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               fill
               alt={movie.title}
-              className={`rounded object-cover  ${
-                isHovered ? "scale-125  transition-all duration-500" : ""
+              className={`rounded object-cover  transition-all duration-500 ${
+                isHovered ? "scale-125 " : ""
               } `}
             />
           </Link>
