@@ -13,14 +13,14 @@ const MovieDetails = async ({ movieId }) => {
   await wait(1000);
 
   return (
-    <div className="m-2 relative">
+    <div className="m-2 relative overflow-hidden">
       <Motion x={10} y={10} scale={[0.5, 1]} duration={1}>
         <Image
           src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
           width={50}
           height={50}
           alt="logo"
-          className="rounded bg-transparent w-full h-[800px] sm:h-[800px] object-cover "
+          className="rounded bg-transparent w-full h-[800px] sm:h-[800px] object-cover hover:scale-105 transition-all duration-500  "
         />
       </Motion>
 

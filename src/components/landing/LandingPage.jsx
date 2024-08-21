@@ -17,13 +17,13 @@ const LandingPage = async () => {
   const data = results[0];
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full overflow-hidden">
       <Image
         src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
         width={50}
         height={50}
         alt="logo"
-        className=" bg-transparent w-full h-[700px] object-cover"
+        className=" bg-transparent w-full h-[700px] object-cover hover:scale-105 transition-all duration-500 "
       />
       <div className="max-w-xl text-gray-300/100  flex flex-col gap-5 absolute top-10 sm:top-32 sm:left-14 p-5 ">
         <TextTitle title={data.title} />

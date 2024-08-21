@@ -1,15 +1,14 @@
 import Link from "next/link";
+import { Suspense } from "react";
+import { DrawerBox } from "../drawer/DrawerBox";
 import Logo from "../logo/Logo";
 import { ModeToggle } from "./ModeToggle";
-import SearchBar from "./SearchBar";
 import { NavigationMenuBar } from "./NavigationMenu";
-import { DrawerBox } from "../drawer/DrawerBox";
-import { HeartIcon } from "@radix-ui/react-icons";
-import { Suspense } from "react";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   return (
-    <div className="sticky top-0 z-40 bg-background">
+    <div className="sticky top-0 z-40 backdrop-filter backdrop-contrast-125 backdrop-blur-lg bg-opacity-40">
       <nav className="max-w-7xl mx-auto p-3 py-4 flex gap-2 justify-between items-center ">
         <Link href={"/"}>
           <Logo />

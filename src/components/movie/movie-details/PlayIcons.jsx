@@ -20,7 +20,7 @@ const PlayIcons = ({ id }) => {
         <Link href={`/movies/${id}`}>
           <IconButton
             name={"Download Now"}
-            icon={<DownloadIcon className="mr-1" />}
+            icon={<DownloadIcon className="mr-1 animate-accordion-up" />}
           />
         </Link>
       </div>

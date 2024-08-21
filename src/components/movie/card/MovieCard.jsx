@@ -37,12 +37,11 @@ export function MovieCard({ movie }) {
       <Motion x={10} y={10} scale={[1.5, 0.8, 1]} duration={1}>
         <CardHeader className="relative aspect-square m-2">
           <div
-            className={`absolute top-12 z-50 right-10 ${
+            className={`absolute top-[20%] z-50 left-[50%]  ${
               isHovered ? "opacity-100" : "opacity-0"
             }    transition-opacity duration-700 `}
           >
             <MovieDetailFavButton movie={movie} />
-            {/* <HeartIcon className="w-[1.5rem] h-[1.5rem]" /> */}
           </div>
           <Link href={`/movies/${movie.id}`}>
             <Image
